@@ -16,11 +16,40 @@ function contains(cell) {
   return false;
 }
 
-const printCell = (cell, state) => {};
+const printCell = (cell, state) => {
+  if (contains.call(state, cell)) {
+    return "\u25A3";
+  }
+  return "\u25A2";
+};
 
-const corners = (state = []) => {};
+const corners = (state = []) => {
+  if (state.length === 0) {
+    return {
+      topRight: [0, 0],
+      bottomLeft: [0, 0],
+    };
+  }
+  const xs = state.map(([x, _]) => x);
+  const ys = state.map(([_, y]) => y);
+  return {
+    topRight: [Math.max(...xs), Math.max(...ys)],
+    bottomLeft: [Math.min(...xs), Math.min(...ys)],
+  };
+};
 
-const printCells = (state) => {};
+const printCells = (state) => {
+  const { topRight, bottomLeft } = corners(state);
+  let output = "";
+  for (y = topRight[1]; y >= bottomLeft[1]; --y) {
+    let row = [];
+    for (x = bottomLeft[0]; x <= topRight[0]; ++x) {
+      row.push(printCell([x, y], state));
+    }
+    output += row.join(" ") + "\n";
+  }
+  return output;
+};
 
 const getNeighborsOf = ([x, y]) => {};
 

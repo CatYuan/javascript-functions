@@ -118,121 +118,121 @@ describe("Conway's Game of Life", () => {
     });
   });
 
-  // describe("Finding the corners", () => {
-  //   it("Should have a corners function. @corners-function", () => {
-  //     const corners = gameoflife.corners([
-  //       [2, 3],
-  //       [2, 1],
-  //       [4, 3],
-  //       [1, 1],
-  //       [2, 1],
-  //       [3, 1],
-  //     ]);
-  //     assert(
-  //       gameoflife.corners,
-  //       "Have you created and exported a `corners` function?"
-  //     );
+  describe("Finding the corners", () => {
+    it("Should have a corners function. @corners-function", () => {
+      const corners = gameoflife.corners([
+        [2, 3],
+        [2, 1],
+        [4, 3],
+        [1, 1],
+        [2, 1],
+        [3, 1],
+      ]);
+      assert(
+        gameoflife.corners,
+        "Have you created and exported a `corners` function?"
+      );
 
-  //     const zeroCorners = (
-  //       gameoflife.corners || (() => ({ topRight: [], bottomLeft: [] }))
-  //     )() || { topRight: [], bottomLeft: [] };
-  //     assert(
-  //       gameoflife.same &&
-  //         gameoflife.corners &&
-  //         gameoflife.same(zeroCorners.topRight, [0, 0]),
-  //       "Have you ensured that topRight is [0,0] if there are no living cells?"
-  //     );
-  //     assert(
-  //       gameoflife.same &&
-  //         gameoflife.corners &&
-  //         gameoflife.same(zeroCorners.bottomLeft, [0, 0]),
-  //       "Have you ensured that botomLeft is [0,0] if there are no living cells?"
-  //     );
+      const zeroCorners = (
+        gameoflife.corners || (() => ({ topRight: [], bottomLeft: [] }))
+      )() || { topRight: [], bottomLeft: [] };
+      assert(
+        gameoflife.same &&
+          gameoflife.corners &&
+          gameoflife.same(zeroCorners.topRight, [0, 0]),
+        "Have you ensured that topRight is [0,0] if there are no living cells?"
+      );
+      assert(
+        gameoflife.same &&
+          gameoflife.corners &&
+          gameoflife.same(zeroCorners.bottomLeft, [0, 0]),
+        "Have you ensured that botomLeft is [0,0] if there are no living cells?"
+      );
 
-  //     assert(gameoflife.corners && corners.topRight, "");
-  //     assert(gameoflife.corners && Array.isArray(corners.topRight), "");
-  //     assert(gameoflife.corners && corners.topRight.length === 2, "");
+      assert(gameoflife.corners && corners.topRight, "");
+      assert(gameoflife.corners && Array.isArray(corners.topRight), "");
+      assert(gameoflife.corners && corners.topRight.length === 2, "");
 
-  //     assert(
-  //       gameoflife.same &&
-  //         gameoflife.corners &&
-  //         gameoflife.same(corners.topRight, [4, 3]),
-  //       "Have you implemented a corners function that returns the correct top right coordinate?"
-  //     );
+      assert(
+        gameoflife.same &&
+          gameoflife.corners &&
+          gameoflife.same(corners.topRight, [4, 3]),
+        "Have you implemented a corners function that returns the correct top right coordinate?"
+      );
 
-  //     assert(gameoflife.corners && corners.bottomLeft, "");
-  //     assert(gameoflife.corners && Array.isArray(corners.bottomLeft), "");
-  //     assert(gameoflife.corners && corners.bottomLeft.length === 2, "");
+      assert(gameoflife.corners && corners.bottomLeft, "");
+      assert(gameoflife.corners && Array.isArray(corners.bottomLeft), "");
+      assert(gameoflife.corners && corners.bottomLeft.length === 2, "");
 
-  //     assert(
-  //       gameoflife.same &&
-  //         gameoflife.corners &&
-  //         gameoflife.same(corners.bottomLeft, [1, 1]),
-  //       "Have you implemented a corners function that returns the correct bottom left coordinate?"
-  //     );
+      assert(
+        gameoflife.same &&
+          gameoflife.corners &&
+          gameoflife.same(corners.bottomLeft, [1, 1]),
+        "Have you implemented a corners function that returns the correct bottom left coordinate?"
+      );
 
-  //     var cornersNode;
-  //     esprima.parseModule(source, {}, function (node) {
-  //       if (
-  //         (node.type === "VariableDeclarator" ||
-  //           node.type === "FunctionDeclaration") &&
-  //         node.id &&
-  //         node.id.name === "corners"
-  //       ) {
-  //         cornersNode = node;
-  //       }
-  //     });
-  //     assert(
-  //       typeof cornersNode != "undefined" &&
-  //         (cornersNode.params || cornersNode.init.params)[0].type ==
-  //           "AssignmentPattern",
-  //       "Have you provided a default value for the 'corners' function parameter?"
-  //     );
-  //   });
-  // });
+      var cornersNode;
+      esprima.parseModule(source, {}, function (node) {
+        if (
+          (node.type === "VariableDeclarator" ||
+            node.type === "FunctionDeclaration") &&
+          node.id &&
+          node.id.name === "corners"
+        ) {
+          cornersNode = node;
+        }
+      });
+      assert(
+        typeof cornersNode != "undefined" &&
+          (cornersNode.params || cornersNode.init.params)[0].type ==
+            "AssignmentPattern",
+        "Have you provided a default value for the 'corners' function parameter?"
+      );
+    });
+  });
 
-  // describe("Printing the game state", () => {
-  //   it("Should have a printCells function. @printCells-function", () => {
-  //     assert(
-  //       gameoflife.printCells,
-  //       "Have you created and exported a 'printCells' function?"
-  //     );
+  describe("Printing the game state", () => {
+    it("Should have a printCells function. @printCells-function", () => {
+      assert(
+        gameoflife.printCells,
+        "Have you created and exported a 'printCells' function?"
+      );
 
-  //     assert.equal(
-  //       typeof gameoflife.printCells([[3, 2]]),
-  //       "string",
-  //       "Have you created a 'printCells' function that returns a string representation of the game state?"
-  //     );
-  //     assert.equal(
-  //       trimOfWhitespace(gameoflife.printCells([[3, 2]])),
-  //       "▣",
-  //       "Have you created a 'printCells' function that prints '▣' for each living cell, '▢' for each non-living cell and a newline character at the end of each row?"
-  //     );
-  //     assert.equal(
-  //       trimOfWhitespace(
-  //         gameoflife.printCells([
-  //           [3, 2],
-  //           [5, 2],
-  //         ])
-  //       ),
-  //       trimOfWhitespace("▣ ▢ \n ▣\n"),
-  //       "Have you created a 'printCells' function that prints '▣' for each living cell, '▢' for each non-living cell, a space in between each cell and a newline character at the end of each row?"
-  //     );
-  //     assert(
-  //       trimOfWhitespace(
-  //         gameoflife.printCells([
-  //           [3, 2],
-  //           [2, 3],
-  //           [3, 3],
-  //           [3, 4],
-  //           [4, 4],
-  //         ])
-  //       ),
-  //       "▢ ▣ ▣\n▣ ▣ ▢\n▢ ▣ ▢\n",
-  //       "Have you created a 'printCells' function that prints '▣' for each living cell, '▢' for each non-living cell, a space in between each cell and a newline character at the end of each row?"
-  //     );
-  //   });
-  // });
+      assert.equal(
+        typeof gameoflife.printCells([[3, 2]]),
+        "string",
+        "Have you created a 'printCells' function that returns a string representation of the game state?"
+      );
+      assert.equal(
+        trimOfWhitespace(gameoflife.printCells([[3, 2]])),
+        "▣",
+        "Have you created a 'printCells' function that prints '▣' for each living cell, '▢' for each non-living cell and a newline character at the end of each row?"
+      );
+      assert.equal(
+        trimOfWhitespace(
+          gameoflife.printCells([
+            [3, 2],
+            [5, 2],
+          ])
+        ),
+        trimOfWhitespace("▣ ▢ \n ▣\n"),
+        "Have you created a 'printCells' function that prints '▣' for each living cell, '▢' for each non-living cell, a space in between each cell and a newline character at the end of each row?"
+      );
+      assert(
+        trimOfWhitespace(
+          gameoflife.printCells([
+            [3, 2],
+            [2, 3],
+            [3, 3],
+            [3, 4],
+            [4, 4],
+          ])
+        ),
+        "▢ ▣ ▣\n▣ ▣ ▢\n▢ ▣ ▢\n",
+        "Have you created a 'printCells' function that prints '▣' for each living cell, '▢' for each non-living cell, a space in between each cell and a newline character at the end of each row?"
+      );
+    });
+  });
 
   // describe("Finding neighbors", () => {
   //   it("Should have a getNeighborsOf function. @getNeighborsOf-function", () => {
